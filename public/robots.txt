@@ -1,0 +1,6 @@
+# Robots.txt for Aivoren
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://aivoren.com/sitemap.xml

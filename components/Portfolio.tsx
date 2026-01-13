@@ -2,6 +2,11 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
+const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+};
+
 const projects = [
   {
     title: 'Schoolmule',
@@ -89,7 +94,11 @@ const Portfolio: React.FC = () => {
         <div className="mt-16 text-center">
           <div className="inline-block p-6 rounded-[2rem] bg-indigo-600 text-white">
             <p className="text-lg font-medium">Ready to see your business on this list?</p>
-            <a href="#contact" className="text-white font-bold underline decoration-white/40 hover:decoration-white transition-all ml-2">
+            <a
+              href="#contact"
+              onClick={(e) => scrollTo(e, 'contact')}
+              className="text-white font-bold underline decoration-white/40 hover:decoration-white transition-all ml-2"
+            >
               Let's build your site today.
             </a>
           </div>

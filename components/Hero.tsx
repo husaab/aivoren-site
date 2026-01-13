@@ -3,6 +3,10 @@ import React from 'react';
 import { ArrowRight, CheckCircle, Zap } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background Decor */}
@@ -31,6 +35,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
           <a
             href="#pricing"
+            onClick={(e) => scrollTo(e, 'pricing')}
             className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white text-lg px-8 py-4 rounded-2xl font-bold transition-all transform hover:scale-105 shadow-xl shadow-indigo-200 flex items-center justify-center space-x-2"
           >
             <span>See Pricing</span>
@@ -38,6 +43,7 @@ const Hero: React.FC = () => {
           </a>
           <a
             href="#contact"
+            onClick={(e) => scrollTo(e, 'contact')}
             className="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 text-lg px-8 py-4 rounded-2xl font-bold transition-all shadow-sm"
           >
             Get Started

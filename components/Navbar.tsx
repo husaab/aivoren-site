@@ -14,18 +14,34 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Features', id: 'features' },
+    { name: 'Portfolio', id: 'portfolio' },
+    { name: 'Pricing', id: 'pricing' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a href="#" className="flex items-center space-x-3">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center space-x-3"
+          >
             <img
               src="/images/aivoren-logo.png"
               alt="Aivoren"
@@ -39,7 +55,8 @@ const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
+                href={`#${link.id}`}
+                onClick={(e) => scrollToSection(e, link.id)}
                 className="text-slate-600 hover:text-indigo-600 font-medium transition-colors"
               >
                 {link.name}
@@ -47,6 +64,7 @@ const Navbar: React.FC = () => {
             ))}
             <a
               href="#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-indigo-200"
             >
               Get Started
@@ -71,8 +89,8 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              href={`#${link.id}`}
+              onClick={(e) => scrollToSection(e, link.id)}
               className="block text-lg text-slate-700 font-medium"
             >
               {link.name}
@@ -80,7 +98,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="#contact"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'contact')}
             className="block w-full text-center bg-indigo-600 text-white py-3 rounded-xl font-bold"
           >
             Get Started

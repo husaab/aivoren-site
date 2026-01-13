@@ -3,6 +3,10 @@ import React from 'react';
 import { Check, Star, Search } from 'lucide-react';
 
 const Pricing: React.FC = () => {
+  const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <section id="pricing" className="py-24 bg-slate-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,6 +55,7 @@ const Pricing: React.FC = () => {
 
             <a
               href="#contact"
+              onClick={(e) => scrollTo(e, 'contact')}
               className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-indigo-100 transition-all"
             >
               Start Your Subscription
@@ -62,10 +67,10 @@ const Pricing: React.FC = () => {
             <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
               <Search size={24} />
             </div>
-            
+
             <h3 className="text-2xl font-bold text-slate-900 mb-2">Google Business Add-on</h3>
             <p className="text-slate-500 mb-8">Dominate local search results with an optimized Google profile.</p>
-            
+
             <div className="flex items-baseline mb-8">
               <span className="text-5xl font-extrabold text-slate-900">+$25</span>
               <span className="text-slate-500 font-medium ml-2">/ month</span>
@@ -91,6 +96,7 @@ const Pricing: React.FC = () => {
 
             <a
               href="#contact"
+              onClick={(e) => scrollTo(e, 'contact')}
               className="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-2xl font-bold text-lg transition-all"
             >
               Add to My Plan
