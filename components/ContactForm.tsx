@@ -140,8 +140,9 @@ const ContactForm: React.FC = () => {
                     disabled={status === 'submitting'}
                     className="w-full px-5 py-4 rounded-2xl bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all appearance-none disabled:opacity-50"
                   >
-                    <option value="website">Website Subscription ($50/mo)</option>
-                    <option value="bundle">Website + Google Business ($75/mo)</option>
+                    <option value="website">Website Subscription ($35/mo)</option>
+                    <option value="bundle">Website + Google Business ($50/mo)</option>
+                    <option value="custom">Custom Site (E-commerce, Web App)</option>
                     <option value="other">Other Inquiry</option>
                   </select>
                 </div>
